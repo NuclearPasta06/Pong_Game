@@ -1,5 +1,30 @@
 #include "utils.cpp"
 #include<windows.h>
+#include<irrKlang.h>
+using namespace irrklang;
+
+
+ISoundEngine* SoundEngine = nullptr;
+
+void PlayBackgroundMusic() {
+	if (SoundEngine) {
+		SoundEngine->play2D("song_mix_pong.mp3", true); // Play in loop
+	}
+}
+
+void InitAudio() {
+	// Initialize the sound engine
+	SoundEngine = createIrrKlangDevice();
+	if (!SoundEngine) {
+		return; // Handle error
+	}
+}
+
+void CleanupAudio() {
+	if (SoundEngine) {
+		SoundEngine->drop(); // Delete the engine
+	}
+}
 
 global_variable bool run = true;
 
@@ -58,7 +83,8 @@ LRESULT CALLBACK window_callback(HWND hwnd,UINT uMsg,WPARAM wParam,LPARAM lParam
 
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nShowCmd)
 {
-	PlaySound(L"sound1.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	InitAudio();
+	PlayBackgroundMusic();
 
 	ShowCursor(FALSE);
 
@@ -153,5 +179,5 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nSh
 		delta_time = (float)(frame_end_time.QuadPart - frame_begin_time.QuadPart) / performance_frequency;
 		frame_begin_time = frame_end_time;
 	}
-
+	CleanupAudio();
 }

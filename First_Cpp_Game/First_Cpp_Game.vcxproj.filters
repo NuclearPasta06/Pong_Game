@@ -45,5 +45,8 @@
     <Media Include="sound1.wav">
       <Filter>Resource Files</Filter>
     </Media>
+    <Media Include="..\..\..\..\Downloads\song_mix_pong.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>
