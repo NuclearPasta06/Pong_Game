@@ -62,8 +62,8 @@ simulate(Input *input,float dt)
 		}
 		else {
 			player_1_ddp = (ball_p_y - player_1_p) * 100;
-			if (player_1_ddp > 1400) player_1_ddp = 1400;
-			if (player_1_ddp < -1400) player_1_ddp = -1400;
+			if (player_1_ddp > 2000) player_1_ddp = 2000;
+			if (player_1_ddp < -2000) player_1_ddp = -2000;
 		}
 		float player_2_ddp = 0.f; //units per second
 		if (is_down(BUTTON_W)) player_2_ddp += 2000;

@@ -8,7 +8,7 @@ ISoundEngine* SoundEngine = nullptr;
 
 void PlayBackgroundMusic() {
 	if (SoundEngine) {
-		SoundEngine->play2D("song_mix_pong.mp3", true); // Play in loop
+		SoundEngine->play2D("sound1.wav", true); // Play in loop
 	}
 }
 

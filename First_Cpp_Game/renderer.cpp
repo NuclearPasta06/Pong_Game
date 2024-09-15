@@ -3,7 +3,7 @@ clear_screen(u32 color) {
 	unsigned int* pixel = (u32*)render_state.memory;
 	for (int y = 0; y < render_state.height; y++) {
 		for (int x = 0; x < render_state.width; x++) {
-			*pixel++ = x*color + y*color;
+			*pixel++ = -y*color + x*color;
 		}
 	}
 }
